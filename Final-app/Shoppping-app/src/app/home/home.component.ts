@@ -20,6 +20,13 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  getProductbyId(id: any) {
+    this.dataService.getAllItemsbyId(id).subscribe((data: any) => {
+      this.products = data.data
+      console.log(this.products);
+    })
+  }
+
   ngOnInit(): void {
     this.getAllitems()
   }

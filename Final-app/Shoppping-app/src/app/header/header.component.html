@@ -24,7 +24,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
             <li><a routerLink="/shop">Shop</a></li>
-            <li><a routerLink="/profile-details:id">Product Details</a></li>
+            <li><a routerLink="/profile-details">Product Details</a></li>
             <li><a routerLink="/checkout">Checkout</a></li>
             <li><a routerLink="/cart">Cart</a></li>
             <li><a href="#">Confirmation</a></li>
@@ -61,17 +61,17 @@
       </li>
 
       <li class="dropdown cart-nav dropdown-slide list-inline-item">
-        <a href="#" class="dropdown-toggle cart-icon" data-toggle="dropdown" data-hover="dropdown">
+        <a routerLink="" class="dropdown-toggle cart-icon" data-toggle="dropdown" data-hover="dropdown">
           <i class="tf-ion-android-cart"></i>
         </a>
         <div class="dropdown-menu cart-dropdown">
           <!-- Cart Item -->
-          <div class="media">
+          <div class="media" *ngFor="let cart of carts | slice:4:5">
             <a routerLink="/product-single">
-              <img class="media-object img- mr-3" src="assets/images/cart-1.jpg" alt="image" />
+              <img class="media-object img- mr-3" src="{{ cart.imageUrl }}" alt="image" />
             </a>
             <div class="media-body">
-              <h6>Ladies Bag</h6>
+              <h6>{{cart.name}}</h6>
               <div class="cart-price">
                 <span>1 x</span>
                 <span>1250.00</span>
@@ -79,22 +79,6 @@
             </div>
             <a href="#" class="remove"><i class="tf-ion-close"></i></a>
           </div><!-- / Cart Item -->
-
-          <!-- Cart Item -->
-          <div class="media">
-            <a routerLink="/product-single">
-              <img class="media-object img-fluid mr-3" src="assets/images/cart-2.jpg" alt="image" />
-            </a>
-            <div class="media-body">
-              <h6>Skinny Jeans</h6>
-              <div class="cart-price">
-                <span>1 x</span>
-                <span>1250.00</span>
-              </div>
-            </div>
-            <a href="#" class="remove"><i class="tf-ion-close"></i></a>
-          </div><!-- / Cart Item -->
-
           <div class="cart-summary">
             <span class="h6">Total</span>
             <span class="total-price h6">$1799.00</span>

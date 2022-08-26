@@ -1,6 +1,4 @@
-export class User {
-  _id!: String;
-  name!: String;
+export class Login {
   email!: String;
   password!: String;
 }

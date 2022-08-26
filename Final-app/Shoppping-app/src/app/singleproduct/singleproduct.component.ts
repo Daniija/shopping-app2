@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data.service';
+import { ItemInterface } from '../interfaces/items';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-singleproduct',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SingleproductComponent implements OnInit {
 
-  constructor() { }
+  products: any = []
+
+  constructor(private activatedRoute: ActivatedRoute, private dataService: DataService) { }
+
 
   ngOnInit(): void {
+    this.getProductbyId(this.activatedRoute.snapshot.paramMap.get('id'))
+  }
+
+  getProductbyId(id: any) {
+    this.dataService.getAllItemsbyId(id).subscribe((data: any) => {
+      this.products = data.data
+      console.log(this.products);
+    })
   }
 
 }

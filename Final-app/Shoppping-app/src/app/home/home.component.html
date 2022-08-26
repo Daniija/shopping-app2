@@ -6,7 +6,7 @@
             <div class="slider-caption">
               <span class="lead">Winter Collection Sale </span>
               <h1 class="mt-2 mb-5"><span class="text-color">70% off </span>to everything</h1>
-              <a href="#" class="btn btn-main">Shop Now</a>
+              <a routerLink="/shop" class="btn btn-main">Shop Now</a>
             </div>
           </div>
         </div>
@@ -19,7 +19,7 @@
             <div class="slider-caption">
               <span class="lead">up to 70% off</span>
               <h1 class="mt-2 mb-5"><span class="text-color">Classic</span> Style</h1>
-              <a href="#" class="btn btn-main">Shop Now</a>
+              <a routerLink="/shop" class="btn btn-main">Shop Now</a>
             </div>
           </div>
         </div>
@@ -32,7 +32,7 @@
             <div class="slider-caption">
               <span class="lead">Trendy dress</span>
               <h1 class="mt-2 mb-5"><span class="text-color">Winter </span>Collection</h1>
-              <a href="#" class="btn btn-main">Shop Now</a>
+              <a routerLink="/shop" class="btn btn-main">Shop Now</a>
             </div>
           </div>
         </div>
@@ -42,13 +42,13 @@
   <section class="category section pt-3 pb-0">
     <div class="container">
       <div class="row">
-        <div class="col-lg-4 col-sm-12 col-md-6" *ngFor="let product of products | slice:0:3; let i=index">
+        <div class="col-lg-4 col-sm-12 col-md-6" *ngFor="let product of products | slice:27:30; let i=index">
           <div class="cat-item mb-4 mb-lg-0">
-            <img src="../../assets/images/cat-1.jpg" alt="" class="img-fluid">
+            <img src="{{ product.imageUrl }}" alt="" class="img-fluid">
               <div class="item-info">
                 <p class="mb-0">{{product.name}}</p>
                   <h4 class="mb-4">up to <strong>50% </strong>off</h4>
-                <a href="#" class="read-more">Shop now</a>
+                <a href="" routerLink="/shop" class="read-more">Shop now</a>
               </div>
           </div>
         </div>
@@ -68,21 +68,21 @@
 
 
         <div class="row">
-          <div class="col-lg-3 col-12 col-md-6 col-sm-6 mb-5" *ngFor="let product of products">
+          <div class="col-lg-3 col-12 col-md-6 col-sm-6 mb-5" *ngFor="let product of products | slice:7:19; let i = index">
               <div class="product">
                 <div class="product-wrap">
-                    <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-first" src="assets/images/322.jpg" alt="product-img" /></a>
-                    <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-second" src="assets/images/444.jpg" alt="product-img" /></a>
+                  <a routerLink="/singleproduct/{{product._id}}"><img style="width: 20px ;" class="img-fluid w-100 mb-3 img-first" src="{{ product.imageUrl }}" alt="product-img" /></a>
+                  <a routerLink="/singleproduct/{{product._id}}"><img style="width: 20px ;" class="img-fluid w-100 mb-3 img-second" src="{{product.imageUrl }}" alt="product-img" /></a>
                 </div>
 
                 <span class="onsale">Sale</span>
                 <div class="product-hover-overlay">
-                    <a href="#"><i class="tf-ion-android-cart"></i></a>
-                    <a href="#"><i class="tf-ion-ios-heart"></i></a>
+                    <a routerLink="/cart"><i class="tf-ion-android-cart"></i></a>
+                    <a routerLink="#"><i class="tf-ion-ios-heart"></i></a>
                   </div>
 
                 <div class="product-info">
-                    <h2 class="product-title h5 mb-0"><a href="#">{{ product.name}}</a></h2>
+                    <h2 class="product-title h5 mb-0"><a routerLink="/singleproduct/{{product._id}}">{{ product.name}}</a></h2>
                     <span class="price">
                         {{ product.price | currency }}
                     </span>
@@ -103,7 +103,7 @@
             <p class="text-md mt-3 text-white">Hurry up! Limited time offer.Grab ot now!</p>
             <!-- syo-timer -->
                 <div id="simple-timer" class="syotimer mb-5"></div>
-            <a href="#" class="btn btn-main"><i class="ti-bag mr-2"></i>Shop Now </a>
+            <a routerLink="/shop" class="btn btn-main"><i class="ti-bag mr-2"></i>Shop Now </a>
           </div>
         </div>
       </div>
@@ -113,17 +113,17 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-sm-12 col-md-12">
-            <img src="assets/images/adsv.jpg" alt="Product big thumb"  class="img-fluid w-100">
+            <img src="https://cdn.discordapp.com/attachments/921068856024367114/1012187868749385738/adsv.jpg" alt="Product big thumb"  class="img-fluid w-100">
         </div>
         <div class="col-lg-4 col-sm-6 col-md-6">
           <div class="widget-featured-entries mt-5 mt-lg-0">
-            <h4 class="mb-4 pb-3">Best selllers</h4>
+            <h4 class="mb-4 pb-3">Best sellers</h4>
               <div class="media mb-3" *ngFor="let product of products | slice:10:15; let i = index">
-                <a class="featured-entry-thumb" routerLink="/product-single">
-                  <img src="assets/images/p-1.jpg" alt="Product thumb" width="64" class="img-fluid mr-3">
+                <a class="featured-entry-thumb" routerLink="/singleproduct/{{product._id}}">
+                  <img src="{{ product.imageUrl }}" alt="Product thumb" width="64" class="img-fluid mr-3">
                 </a>
                 <div class="media-body">
-                  <h6 class="featured-entry-title mb-0"><a href="#">{{ product.name }}</a></h6>
+                  <h6 class="featured-entry-title mb-0"><a routerLink="/singleproduct/{{product._id}}">{{ product.name }}</a></h6>
                   <p class="featured-entry-meta">{{product.price | currency}}</p>
                 </div>
               </div>
@@ -133,55 +133,19 @@
           <div class="widget-featured-entries mt-5 mt-lg-0">
             <h4 class="mb-4 pb-3">New Arrivals</h4>
                   <div class="media mb-3" *ngFor="let product of products | slice:8:13; let i = index">
-                    <a class="featured-entry-thumb" routerLink="/product-single">
-                      <img src="assets/images/p-7.jpg" alt="Product thumb" width="64" class="img-fluid mr-3">
+                    <a class="featured-entry-thumb" routerLink="/singleproduct/{{product._id}}">
+                      <img src="{{ product.imageUrl }}" alt="Product thumb" width="64" class="img-fluid mr-3">
                     </a>
                     <div class="media-body">
-                      <h6 class="featured-entry-title mb-0"><a href="#">{{ product.name}}</a></h6>
+                      <h6 class="featured-entry-title mb-0"><a routerLink="/singleproduct/{{product._id}}">{{ product.name }}</a></h6>
                       <p class="featured-entry-meta">{{ product.price | currency }}</p>
                     </div>
                   </div>
-                  <!-- <div class="media mb-3">
-                    <a class="featured-entry-thumb" href="#">
-                      <img src="assets/images/p-8.jpg" alt="Product thumb" width="64" class="img-fluid mr-3">
-                    </a>
-                    <div class="media-body">
-                      <h6 class="featured-entry-title mb-0"><a href="#">Nike - Brasilia Medium Backpack</a></h6>
-                      <p class="featured-entry-meta">$27.99</p>
-                    </div>
-                  </div>
-                  <div class="media mb-3">
-                    <a class="featured-entry-thumb" href="#">
-                      <img src="assets/images/p-1.jpg" alt="Product thumb" width="64" class="img-fluid mr-3">
-                    </a>
-                    <div class="media-body">
-                      <h6 class="featured-entry-title mb-0"><a href="#">Guess - GU7295</a></h6>
-                      <p>$4500.00</p>
-                    </div>
-                  </div>
-                  <div class="media mb-3">
-                    <a class="featured-entry-thumb" href="#">
-                      <img src="assets/images/p-2.jpg" alt="Product thumb" width="64" class="img-fluid mr-3">
-                    </a>
-                    <div class="media-body">
-                      <h6 class="featured-entry-title mb-0"><a href="#">Adidas Originals Cap</a></h6>
-                      <p class="featured-entry-meta">$3500.00</p>
-                    </div>
-                  </div>
-                  <div class="media">
-                    <a class="featured-entry-thumb" href="#">
-                      <img src="assets/images/p-4.jpg" alt="Product thumb" width="64" class="img-fluid mr-3">
-                    </a>
-                    <div class="media-body">
-                      <h6 class="featured-entry-title mb-0"><a href="#">Big Star Flip Tops</a></h6>
-                      <p class="featured-entry-meta">$4500.60</p>
-                    </div>
-                  </div> -->
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        </section>
   <section class="features border-top">
     <div class="container">
       <div class="row">
